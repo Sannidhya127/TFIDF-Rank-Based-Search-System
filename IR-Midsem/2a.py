@@ -1,6 +1,7 @@
 import sys
 import optparse
 import logging
+from colored import fg, bg, attr 
 sys.path.append('extra')
 import book_a
 
@@ -17,12 +18,12 @@ CATALOG_FILENAME = 'data/question_answer_pairs.txt'
 def execute_search(data_location):
     query = None
     repository = book_a.BookInventory(data_location)
-    logger.info('Ranking on the basis of answers')
-    logger.info('Loading dataset...')
+    logger.info(f"{fg('226')}Ranking on the basis of answers{attr('reset')}")
+    logger.info(f"{fg('226')}Loading dataset...{attr('reset')}")
 
     repository.load_books()
     docs_number = repository.books_count()
-    logger.info('Done loading dataset, %d docs in index', docs_number)
+    logger.info(f"{fg('46')}Done loading dataset, {docs_number} docs in index{attr(reset)}")
 
     while query is not '':
 
